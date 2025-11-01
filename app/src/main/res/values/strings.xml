@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Tarea2Equipo</string>
+    <string name="logo_desc">Logo de Hogwarts</string>
+    <string name="descripcion_app">Aprende más sobre los ingredientes más comunes para hacer pociones</string>
+    <string name="texto_apodo">Ingresa tu nombre para personalizar la experiencia:</string>
+    <string name="texto_correo">Ingresa la casa a la que perteneces:</string>
+    <string name="hint_nombre">Ingresa tu nombre</string>
+    <string name="hint_casa">Ingresa tu casa</string>
+    <string name="boton_continuar">Continuar</string>
+    <string name="texto_instruccion">Seleccione un ingrediente para saber sus propiedades</string>
+    <string name="ingrediente1_nombre">Gillyweed</string>
+    <string name="ingrediente2_nombre">Pelo de unicornio</string>
+    <string name="ingrediente3_nombre">Mandragora</string>
+    <string name="ingrediente4_nombre">Tentácula venenosa</string>
+    <string name="ingrediente_1">Ingrediente 1</string>
+    <string name="ingrediente_2">Ingrediente 2</string>
+    <string name="ingrediente_3">Ingrediente 3</string>
+    <string name="ingrediente_4">Ingrediente 4</string>
+</resources>
