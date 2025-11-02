@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/classroom">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textTituloIngrediente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        android:text="Nombre del Ingrediente"
+        android:textColor="@color/texto_principal"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/separador"
+        android:layout_marginBottom="24dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textPropiedadesTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Propiedades:"
+        android:textColor="@color/texto_principal"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="8dp"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/textPropiedadesDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cargando descripción..."
+        android:textColor="@color/texto_principal"
+        android:textSize="18sp"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="24dp"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@color/blanco">
+
+        <ImageView
+            android:id="@+id/imageIngrediente"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gillyweed"
+            android:padding="8dp"
+            android:contentDescription="Imagen del Ingrediente" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonRegresar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/boton_regresar"
+        android:textColor="@color/blanco"
+        android:padding="15dp"
+        app:cornerRadius="8dp" />
+
+</LinearLayout>

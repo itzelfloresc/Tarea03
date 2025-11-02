@@ -16,4 +16,11 @@
     <string name="ingrediente_2">Ingrediente 2</string>
     <string name="ingrediente_3">Ingrediente 3</string>
     <string name="ingrediente_4">Ingrediente 4</string>
+
+    <string name="gillyweed_propiedades_desc">Las Bránquialgas permiten a quien las consume respirar bajo el agua y les da branquias y membranas entre los dedos. Su efecto dura aproximadamente una hora. Es esencial para el Torneo de los Tres Magos.</string>
+    <string name="unicornhair_propiedades_desc">El pelo de unicornio es una sustancia poderosa y delicada. Es un núcleo común para varitas mágicas y se utiliza en pociones curativas por su gran pureza y propiedades mágicas. Es extremadamente difícil de obtener.</string>
+    <string name="mandragora_propiedades_desc">La Mandrágora se utiliza principalmente para curar a las personas que han sido petrificadas. Su llanto es mortal, por lo que es necesario usar orejeras al manipularla. El proceso de maduración es largo.</string>
+    <string name="tentacula_propiedades_desc">La Tentácula Venenosa es una planta altamente peligrosa, clasificada como de clase XXXXX. Sus tentáculos contienen un veneno mortal. Sus hojas, sin embargo, se utilizan en algunas pociones, y es un ingrediente prohibido.</string>
+
+    <string name="boton_regresar">Regresar a la Lista</string>
 </resources>

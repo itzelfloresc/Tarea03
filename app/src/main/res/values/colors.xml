@@ -4,4 +4,7 @@
     <color name="fondo">#b0aba0</color>
     <color name="blanco">#FFFFFF</color>
     <color name="blanco_transparente">#c9c9c9</color>
+    <color name="texto_principal">#f5f6f7</color>
+    <color name="separador">#f5f6f7</color>
+    <color name="color_boton">#d2d4d6</color>
 </resources>
