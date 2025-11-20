@@ -1,19 +1,46 @@
 package com.example.tarea2equipo;
 
-import android.app.Activity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
+import android.view.MenuItem;
+import android.view.Menu;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-public class IngredientesActivity extends Activity {
+public class IngredientesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String nombreUsuario;
     private String casaUsuario;
+
+    // Variables Drawer
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ingredientes);
+
+        // --- CONFIGURACIÓN ACTIONBAR Y DRAWER ---
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
 
         // 1. Recuperar la información pasada desde MainActivity
         Bundle extras = getIntent().getExtras();
@@ -62,5 +89,46 @@ public class IngredientesActivity extends Activity {
 
         // 4. Iniciar la Activity de detalle
         startActivity(intent);
+    }
+
+    // --- LÓGICA DE MENÚS ---
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_home) {
+            // Regresar al inicio si se presiona Inicio
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.nav_profile) {
+            Toast.makeText(this, "Perfil de " + nombreUsuario, Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_settings) {
+            Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show();
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_actbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_search) {
+            Toast.makeText(this, "Buscando...", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_notifications) {
+            Toast.makeText(this, "Notificaciones", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_help) {
+            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

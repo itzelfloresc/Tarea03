@@ -1,23 +1,56 @@
 package com.example.tarea2equipo;
 
-import android.app.Activity;
+// 1. Cambiar herencia a AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import com.google.android.material.navigation.NavigationView;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class MainActivity extends Activity {
+// 2. Implementar interfaz para escuchar clicks del Drawer
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     // Claves para pasar datos a otras Activities
     public static final String EXTRA_NOMBRE = "com.example.tarea2equipo.NOMBRE";
     public static final String EXTRA_CASA = "com.example.tarea2equipo.CASA";
+
+    // Variables para el Drawer
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_inicio);
+
+        // --- A. CONFIGURACIÓN DE (ACTION BAR) ---
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar); // Le dice a Android que use nuestra Toolbar como Action Bar
+
+        // --- B. CONFIGURACIÓN DEL DRAWER ---
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+
+        // Configura el icono de "hamburguesa" que abre/cierra el menú
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawerLayout, toolbar,
+                R.string.navigation_drawer_open, R.string.navigation_drawer_close); // Strings de accesibilidad (puedes definirlos en strings.xml)
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        // Asigna el listener para los clicks del menú lateral
+        navigationView.setNavigationItemSelectedListener(this);
 
         final TextInputEditText inputApodo = findViewById(R.id.inputApodo);
         // El ID 'inputEmail' en activity_inicio.xml se usa para la casa
@@ -54,4 +87,50 @@ public class MainActivity extends Activity {
             }
         });
     }
+
+    // --- D. CONTROLAR CLICKS DEL MENÚ DRAWER (LATERAL) ---
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            Toast.makeText(this, "Ir a Inicio", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_profile) {
+            Toast.makeText(this, "Ir a Perfil", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_settings) {
+            Toast.makeText(this, "Ir a Configuración", Toast.LENGTH_SHORT).show();
+        }
+
+        // Cierra el drawer después de seleccionar
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    // --- E. INFLAR MENÚ DE LA ACTIONBAR (SUPERIOR) ---
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_actbar, menu);
+        return true;
+    }
+
+    // --- F. CONTROLAR CLICKS DE LA ACTIONBAR (SUPERIOR) ---
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_search) {
+            Toast.makeText(this, "Buscando...", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_notifications) {
+            Toast.makeText(this, "Ver notificaciones", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.action_help) {
+            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
