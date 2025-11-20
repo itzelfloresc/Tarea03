@@ -16,4 +16,9 @@
         android:id="@+id/action_help"
         android:title="Ayuda"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_cart"
+        android:icon="@android:drawable/ic_menu_agenda"
+        android:title="Carrito"
+        app:showAsAction="always" />
 </menu>

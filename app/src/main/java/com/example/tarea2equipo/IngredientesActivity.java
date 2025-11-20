@@ -91,7 +91,7 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
         startActivity(intent);
     }
 
-    // --- LÓGICA DE MENÚS ---
+    // --- MENÚS ---
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -105,6 +105,11 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
             Toast.makeText(this, "Perfil de " + nombreUsuario, Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_settings) {
             Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_cart) {
+            startActivity(new Intent(this, CarritoActivity.class));
+        } else if (id == R.id.nav_carrito) {
+            Intent intent = new Intent(this, CarritoActivity.class);
+            startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
