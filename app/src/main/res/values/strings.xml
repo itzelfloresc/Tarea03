@@ -23,4 +23,7 @@
     <string name="tentacula_propiedades_desc">La Tentácula Venenosa es una planta altamente peligrosa, clasificada como de clase XXXXX. Sus tentáculos contienen un veneno mortal. Sus hojas, sin embargo, se utilizan en algunas pociones, y es un ingrediente prohibido.</string>
 
     <string name="boton_regresar">Regresar a la Lista</string>
+
+    <string name="navigation_drawer_open">Abrir menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
 </resources>
