@@ -119,7 +119,7 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
         } else if (id == R.id.nav_profile) {
             Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_settings) {
-            Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.action_cart) {
             startActivity(new Intent(this, CarritoActivity.class));
         } else if (id == R.id.nav_carrito) {
