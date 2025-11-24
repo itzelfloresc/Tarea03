@@ -17,6 +17,7 @@ import android.widget.Toast;
 public class IngredientesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String nombreUsuario;
     private String casaUsuario;
+    private int idUsuario;
 
     // Variables Drawer
     private DrawerLayout drawerLayout;
@@ -52,6 +53,14 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
             nombreUsuario = "Estudiante";
             casaUsuario = "Hogwarts";
         }
+
+        // Registramos (o recuperamos) el usuario en la BD para obtener su ID único
+        GestorBD gestor = new GestorBD(this);
+        gestor.open();
+        // Creamos el objeto usuario temporal para buscarlo/crearlo
+        Usuario usuarioTemp = new Usuario(nombreUsuario, casaUsuario);
+        idUsuario = gestor.registrarUsuario(usuarioTemp);
+        gestor.close();
     }
 
     // Método llamado por el atributo android:onClick="mostrarInfo" en el estilo IngredientCard
@@ -86,6 +95,7 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
         intent.putExtra("INGREDIENTE_TAG", ingredienteTag);
         intent.putExtra("INGREDIENTE_NOMBRE", ingredienteNombre);
         intent.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
+        intent.putExtra("ID_USUARIO", idUsuario);
 
         // 4. Iniciar la Activity de detalle
         startActivity(intent);
@@ -97,6 +107,7 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
         int id = item.getItemId();
         if (id == R.id.nav_home) {
             // Regresar al inicio si se presiona Inicio
+            CarritoManager.getInstance().vaciarCarrito();
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -105,10 +116,10 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
             Toast.makeText(this, "Perfil de " + nombreUsuario, Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_settings) {
             Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_cart) {
-            startActivity(new Intent(this, CarritoActivity.class));
-        } else if (id == R.id.nav_carrito) {
+        } else if (id == R.id.action_cart || id == R.id.nav_carrito) {
+            // --- PASAR ID AL CARRITO ---
             Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
             startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -124,7 +135,13 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_search) {
+        if (id == R.id.action_cart) {
+            // --- PASAR ID AL CARRITO DESDE EL ACTION BAR ---
+            Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_search) {
             Toast.makeText(this, "Buscando...", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_notifications) {

@@ -42,6 +42,8 @@ public class MainActivity extends Activity {
                     return;
                 }
 
+                CarritoManager.getInstance().vaciarCarrito();
+
                 // 2. Crear el Intent para iniciar IngredientesActivity
                 Intent intent = new Intent(MainActivity.this, IngredientesActivity.class);
 

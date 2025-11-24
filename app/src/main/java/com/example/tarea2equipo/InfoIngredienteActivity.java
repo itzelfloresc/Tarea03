@@ -22,6 +22,7 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private double precioIngrediente = 0;
+    private int idUsuario;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +57,8 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
             String ingredienteNombre = extras.getString("INGREDIENTE_NOMBRE", "Ingrediente Desconocido");
 
             textTituloIngrediente.setText(ingredienteNombre);
+
+            idUsuario = extras.getInt("ID_USUARIO", -1);
 
             int descripcionResId;
             int imagenResId;
@@ -112,6 +115,7 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_home) {
+            CarritoManager.getInstance().vaciarCarrito();
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
@@ -120,10 +124,10 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
             Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_settings) {
             Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_cart) {
-            startActivity(new Intent(this, CarritoActivity.class));
-        } else if (id == R.id.nav_carrito) {
+        } else if (id == R.id.action_cart || id == R.id.nav_carrito) {
+            // --- PASAR ID AL CARRITO ---
             Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
             startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -139,7 +143,12 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_search) {
+        if (id == R.id.action_cart) { // Agregar lógica para el icono del carrito arriba a la derecha
+            Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_search) {
             Toast.makeText(this, "Buscando...", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_notifications) {
