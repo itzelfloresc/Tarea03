@@ -23,6 +23,8 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
     private NavigationView navigationView;
     private double precioIngrediente = 0;
     private int idUsuario;
+    private String nombreUsuario;
+    private String casaUsuario;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
             textTituloIngrediente.setText(ingredienteNombre);
 
             idUsuario = extras.getInt("ID_USUARIO", -1);
+            nombreUsuario = extras.getString(MainActivity.EXTRA_NOMBRE, "Estudiante");
+            casaUsuario = extras.getString(MainActivity.EXTRA_CASA, "Hogwarts");
 
             int descripcionResId;
             int imagenResId;
@@ -121,13 +125,19 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_profile) {
-            Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show();
+            Intent intentPerfil = new Intent(this, PerfilActivity.class);
+            intentPerfil.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
+            intentPerfil.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
+            intentPerfil.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intentPerfil);
         } else if (id == R.id.nav_settings) {
             Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.action_cart || id == R.id.nav_carrito) {
             // --- PASAR ID AL CARRITO ---
             Intent intent = new Intent(this, CarritoActivity.class);
             intent.putExtra("ID_USUARIO", idUsuario);
+            intent.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
+            intent.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
             startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);

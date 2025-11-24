@@ -28,6 +28,10 @@ public class CarritoActivity extends AppCompatActivity implements NavigationView
     private DrawerLayout drawerLayout;
     private int idUsuarioActual;
 
+    private int idUsuario;
+    private String nombreUsuario;
+    private String casaUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +51,14 @@ public class CarritoActivity extends AppCompatActivity implements NavigationView
         TextView textTotal = findViewById(R.id.textTotal);
         MaterialButton btnPagar = findViewById(R.id.btnPagar);
         MaterialButton btnRegresar = findViewById(R.id.btnRegresar);
+
+        idUsuario = getIntent().getIntExtra("ID_USUARIO", -1);
+        nombreUsuario = getIntent().getStringExtra(MainActivity.EXTRA_NOMBRE);
+        casaUsuario = getIntent().getStringExtra(MainActivity.EXTRA_CASA);
+
+        // Validar strings por si vienen nulos
+        if (nombreUsuario == null) nombreUsuario = "Estudiante";
+        if (casaUsuario == null) casaUsuario = "Hogwarts";
 
 
         // Obtener datos del Singleton
@@ -124,7 +136,24 @@ public class CarritoActivity extends AppCompatActivity implements NavigationView
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_home) {
-            startActivity(new Intent(this, MainActivity.class));
+            CarritoManager.getInstance().vaciarCarrito();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+        } else if (id == R.id.nav_profile) {
+            Intent intentPerfil = new Intent(this, PerfilActivity.class);
+            intentPerfil.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
+            intentPerfil.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
+            intentPerfil.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intentPerfil);
+        } else if (id == R.id.nav_settings) {
+            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_cart || id == R.id.nav_carrito) {
+            // --- PASAR ID AL CARRITO ---
+            Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;

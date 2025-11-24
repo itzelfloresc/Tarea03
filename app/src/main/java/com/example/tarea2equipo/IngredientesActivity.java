@@ -113,7 +113,11 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_profile) {
-            Toast.makeText(this, "Perfil de " + nombreUsuario, Toast.LENGTH_SHORT).show();
+            Intent intentPerfil = new Intent(this, PerfilActivity.class);
+            intentPerfil.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
+            intentPerfil.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
+            intentPerfil.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intentPerfil);
         } else if (id == R.id.nav_settings) {
             Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.action_cart || id == R.id.nav_carrito) {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GestorBD {
@@ -96,5 +97,29 @@ public class GestorBD {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public List<String> obtenerHistorialPedidos(int idUsuario) {
+        List<String> historial = new ArrayList<>();
+
+        // Consultamos solo la fecha y el total de la tabla pedidos
+        String query = "SELECT " + StoreBaseSQLite.COL_FECHA + ", " + StoreBaseSQLite.COL_TOTAL +
+                " FROM " + StoreBaseSQLite.TABLA_PEDIDOS +
+                " WHERE " + StoreBaseSQLite.COL_ID_USUARIO_PEDIDO + "=?";
+
+        Cursor cursor = db.rawQuery(query, new String[]{String.valueOf(idUsuario)});
+
+        if (cursor.moveToFirst()) {
+            do {
+                // Obtenemos los datos de las columnas (índice 0 es fecha, 1 es total)
+                String fecha = cursor.getString(0);
+                double total = cursor.getDouble(1);
+
+                // Formateamos el texto para la lista
+                historial.add("Compra del: " + fecha + "\nTotal pagado: $" + total);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return historial;
     }
 }
