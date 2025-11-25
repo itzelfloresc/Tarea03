@@ -21,6 +21,10 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private double precioIngrediente = 0;
+    private int idUsuario;
+    private String nombreUsuario;
+    private String casaUsuario;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,10 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
 
         TextView textTituloIngrediente = findViewById(R.id.textTituloIngrediente);
         TextView textPropiedadesDescripcion = findViewById(R.id.textPropiedadesDescripcion);
+        TextView textPrecio = findViewById(R.id.textPrecio);
         ImageView imageIngrediente = findViewById(R.id.imageIngrediente);
         MaterialButton buttonRegresar = findViewById(R.id.buttonRegresar);
+        MaterialButton btnAgregar = findViewById(R.id.buttonAgregarCarrito);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -54,6 +60,10 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
 
             textTituloIngrediente.setText(ingredienteNombre);
 
+            idUsuario = extras.getInt("ID_USUARIO", -1);
+            nombreUsuario = extras.getString(MainActivity.EXTRA_NOMBRE, "Estudiante");
+            casaUsuario = extras.getString(MainActivity.EXTRA_CASA, "Hogwarts");
+
             int descripcionResId;
             int imagenResId;
 
@@ -61,27 +71,39 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
                 case "gillyweed":
                     descripcionResId = R.string.gillyweed_propiedades_desc;
                     imagenResId = R.drawable.gillyweed;
+                    precioIngrediente = 150.00;
                     break;
                 case "unicornhair":
                     descripcionResId = R.string.unicornhair_propiedades_desc;
                     imagenResId = R.drawable.hair;
+                    precioIngrediente = 500.00;
                     break;
                 case "mandragora":
                     descripcionResId = R.string.mandragora_propiedades_desc;
                     imagenResId = R.drawable.mandragora;
+                    precioIngrediente = 300.50;
                     break;
                 case "tentacula":
                     descripcionResId = R.string.tentacula_propiedades_desc;
                     imagenResId = R.drawable.tentacula;
+                    precioIngrediente = 1200.00;
                     break;
                 default:
                     descripcionResId = R.string.app_name; // Fallback para la descripción
                     imagenResId = R.drawable.gillyweed; // Fallback para la imagen
+                    precioIngrediente = 0;
                     break;
             }
 
             textPropiedadesDescripcion.setText(getString(descripcionResId));
             imageIngrediente.setImageResource(imagenResId);
+            textPrecio.setText("Precio: $" + precioIngrediente);
+
+            btnAgregar.setOnClickListener(v -> {
+                Ingrediente nuevoItem = new Ingrediente(ingredienteNombre, precioIngrediente);
+                CarritoManager.getInstance().agregarProducto(nuevoItem);
+                Toast.makeText(this, "Añadido al carrito", Toast.LENGTH_SHORT).show();
+            });
         }
 
         buttonRegresar.setOnClickListener(new View.OnClickListener() {
@@ -92,19 +114,31 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
         });
     }
 
-    // --- LÓGICA COMPARTIDA DE MENÚS ---
+    // --- MENÚS ---
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_home) {
+            CarritoManager.getInstance().vaciarCarrito();
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_profile) {
-            Toast.makeText(this, "Perfil", Toast.LENGTH_SHORT).show();
+            Intent intentPerfil = new Intent(this, PerfilActivity.class);
+            intentPerfil.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
+            intentPerfil.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
+            intentPerfil.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intentPerfil);
         } else if (id == R.id.nav_settings) {
-            Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.action_cart || id == R.id.nav_carrito) {
+            // --- PASAR ID AL CARRITO ---
+            Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
+            intent.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
+            intent.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
+            startActivity(intent);
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -119,7 +153,12 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.action_search) {
+        if (id == R.id.action_cart) { // Agregar lógica para el icono del carrito arriba a la derecha
+            Intent intent = new Intent(this, CarritoActivity.class);
+            intent.putExtra("ID_USUARIO", idUsuario);
+            startActivity(intent);
+            return true;
+        } else if (id == R.id.action_search) {
             Toast.makeText(this, "Buscando...", Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_notifications) {

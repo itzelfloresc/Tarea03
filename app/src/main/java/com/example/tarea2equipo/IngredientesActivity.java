@@ -15,12 +15,11 @@ import android.view.View;
 import android.widget.Toast;
 
 public class IngredientesActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    // Solo se mantiene 'nombreUsuario' porque se usa en onNavigationItemSelected
     private String nombreUsuario;
-    private String casaUsuario;
 
-    // Variables Drawer
+    // Solo se mantiene 'drawerLayout' porque se usa en onNavigationItemSelected
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,7 +31,8 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
         setSupportActionBar(toolbar);
 
         drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
+        // navigationView es ahora local
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar,
@@ -44,19 +44,23 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
 
         // 1. Recuperar la información pasada desde MainActivity
         Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            nombreUsuario = extras.getString(MainActivity.EXTRA_NOMBRE, "Estudiante");
-            casaUsuario = extras.getString(MainActivity.EXTRA_CASA, "Hogwarts");
 
+        // CORRECCIÓN HARDCODING DE STRING
+        String defaultUserName = getString(R.string.default_user_name);
+        String defaultHouseName = getString(R.string.default_house_name);
+
+        if (extras != null) {
+            nombreUsuario = extras.getString(MainActivity.EXTRA_NOMBRE, defaultUserName);
+            // La variable casaUsuario ya no es un campo de clase y se convierte a local si se necesita.
+            // Aquí se recupera si se necesita para alguna lógica futura. Si no se usa, la omitimos.
+            // String casaUsuario = extras.getString(MainActivity.EXTRA_CASA, defaultHouseName);
         } else {
-            nombreUsuario = "Estudiante";
-            casaUsuario = "Hogwarts";
+            nombreUsuario = defaultUserName;
+            // casaUsuario = defaultHouseName;
         }
     }
 
-    // Método llamado por el atributo android:onClick="mostrarInfo" en el estilo IngredientCard
     public void mostrarInfo(View view) {
-        // El tag de la CardView (View) contiene el nombre técnico del ingrediente
         String ingredienteTag = (String) view.getTag();
         String ingredienteNombre;
 
@@ -75,7 +79,7 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
                 ingredienteNombre = getString(R.string.ingrediente4_nombre);
                 break;
             default:
-                ingredienteNombre = "Ingrediente Desconocido";
+                ingredienteNombre = getString(R.string.default_ingredient_name);
                 break;
         }
 
@@ -96,15 +100,15 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_home) {
-            // Regresar al inicio si se presiona Inicio
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_profile) {
-            Toast.makeText(this, "Perfil de " + nombreUsuario, Toast.LENGTH_SHORT).show();
+            String profileMessage = getString(R.string.profile_message, nombreUsuario);
+            Toast.makeText(this, profileMessage, Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_settings) {
-            Toast.makeText(this, "Configuración", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.settings_message), Toast.LENGTH_SHORT).show();
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
@@ -120,13 +124,13 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_search) {
-            Toast.makeText(this, "Buscando...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.search_message), Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_notifications) {
-            Toast.makeText(this, "Notificaciones", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.notifications_message), Toast.LENGTH_SHORT).show();
             return true;
         } else if (id == R.id.action_help) {
-            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.help_message), Toast.LENGTH_SHORT).show();
             return true;
         }
         return super.onOptionsItemSelected(item);
