@@ -4,22 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="@color/fondo"> <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Perfil de Usuario"
-    android:textSize="24sp"
-    android:textStyle="bold"
-    android:textColor="@color/blanco"
-    android:gravity="center"
-    android:layout_marginBottom="20dp"/>
+    android:background="@color/fondo">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/perfil_titulo" android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/blanco"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/tvNombrePerfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Usuario: "
-        android:textSize="20sp"
+        android:text="@string/perfil_usuario_label" android:textSize="20sp"
         android:textColor="@color/blanco"
         android:layout_marginBottom="8dp"/>
 
@@ -27,16 +27,14 @@
         android:id="@+id/tvCasaPerfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Casa: "
-        android:textSize="18sp"
+        android:text="@string/perfil_casa_label" android:textSize="18sp"
         android:textColor="@color/blanco_transparente"
         android:layout_marginBottom="24dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Historial de Pedidos:"
-        android:textSize="18sp"
+        android:text="@string/perfil_historial_titulo" android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/blanco"
         android:layout_marginBottom="10dp"/>
@@ -52,7 +50,6 @@
         android:id="@+id/btnVolverPerfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Volver"
-        android:layout_marginTop="16dp"/>
+        android:text="@string/btn_volver" android:layout_marginTop="16dp"/>
 
 </LinearLayout>

@@ -35,8 +35,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingTop="16dp"
-                android:text="Nombre del Ingrediente"
-                android:textColor="@color/texto_principal"
+                android:text="@string/nombre_ingrediente_placeholder" android:textColor="@color/texto_principal"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp"/>
@@ -51,8 +50,7 @@
                 android:id="@+id/textPropiedadesTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Propiedades:"
-                android:textColor="@color/texto_principal"
+                android:text="@string/propiedades_titulo" android:textColor="@color/texto_principal"
                 android:textSize="20sp"
                 android:textStyle="italic"
                 android:layout_marginBottom="8dp"/>
@@ -61,8 +59,7 @@
                 android:id="@+id/textPropiedadesDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cargando descripción..."
-                android:textColor="@color/texto_principal"
+                android:text="@string/cargando_descripcion" android:textColor="@color/texto_principal"
                 android:textSize="18sp"
                 android:lineSpacingExtra="4dp"
                 android:layout_marginBottom="24dp"/>
@@ -85,15 +82,12 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/gillyweed"
                     android:padding="8dp"
-                    android:contentDescription="Imagen del Ingrediente" />
-
-            </com.google.android.material.card.MaterialCardView>
+                    android:contentDescription="@string/imagen_ingrediente_desc" /> </com.google.android.material.card.MaterialCardView>
             <TextView
                 android:id="@+id/textPrecio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Precio: $0.00"
-                android:textSize="22sp"
+                android:text="@string/precio_inicial" android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="#4CAF50"
                 android:gravity="center"
@@ -110,8 +104,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Regresar"
-                    android:layout_marginEnd="4dp"
+                    android:text="@string/regresar_btn" android:layout_marginEnd="4dp"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
                 <com.google.android.material.button.MaterialButton
@@ -119,8 +112,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Agregar (+)"
-                    android:layout_marginStart="4dp"
+                    android:text="@string/agregar_btn" android:layout_marginStart="4dp"
                     app:backgroundTint="#4CAF50"/>
             </LinearLayout>
 

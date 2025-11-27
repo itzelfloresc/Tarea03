@@ -4,18 +4,18 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@android:drawable/ic_menu_my_calendar"
-            android:title="Perfil" />
+            android:title="@string/nav_profile" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@android:drawable/ic_menu_preferences"
-            android:title="Ayuda" />
+            android:title="@string/nav_help" />
         <item
             android:id="@+id/nav_carrito"
             android:icon="@android:drawable/ic_menu_view"
-            android:title="Ver Carrito" />
+            android:title="@string/nav_view_cart" />
         <item
             android:id="@+id/nav_home"
             android:icon="@android:drawable/ic_menu_rotate"
-            android:title="Cerrar Sesión" />
+            android:title="@string/nav_logout" />
     </group>
 </menu>
