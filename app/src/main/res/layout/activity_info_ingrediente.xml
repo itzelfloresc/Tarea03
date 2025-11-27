@@ -35,9 +35,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingTop="16dp"
-
-                android:text="@string/ingrediente_nombre_placeholder"
-
+                android:text="Nombre del Ingrediente"
                 android:textColor="@color/texto_principal"
                 android:textSize="24sp"
                 android:textStyle="bold"
@@ -53,9 +51,7 @@
                 android:id="@+id/textPropiedadesTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="@string/titulo_propiedades"
-
+                android:text="Propiedades:"
                 android:textColor="@color/texto_principal"
                 android:textSize="20sp"
                 android:textStyle="italic"
@@ -65,9 +61,7 @@
                 android:id="@+id/textPropiedadesDescripcion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:text="@string/descripcion_placeholder"
-
+                android:text="Cargando descripción..."
                 android:textColor="@color/texto_principal"
                 android:textSize="18sp"
                 android:lineSpacingExtra="4dp"
@@ -91,8 +85,7 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/gillyweed"
                     android:padding="8dp"
-
-                    android:contentDescription="@string/descripcion_imagen_ingrediente" />
+                    android:contentDescription="Imagen del Ingrediente" />
 
             </com.google.android.material.card.MaterialCardView>
             <TextView

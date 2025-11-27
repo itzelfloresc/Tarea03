@@ -2,22 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@android:drawable/ic_menu_rotate"
-
-            android:title="@string/drawer_menu_home" />
-
-        <item
             android:id="@+id/nav_profile"
             android:icon="@android:drawable/ic_menu_my_calendar"
-
-            android:title="@string/drawer_menu_profile" />
-
+            android:title="Perfil" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@android:drawable/ic_menu_preferences"
-
-            android:title="@string/drawer_menu_settings" />
-
+            android:title="Ayuda" />
+        <item
+            android:id="@+id/nav_carrito"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="Ver Carrito" />
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@android:drawable/ic_menu_rotate"
+            android:title="Cerrar Sesión" />
     </group>
 </menu>

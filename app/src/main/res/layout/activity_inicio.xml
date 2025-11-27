@@ -28,6 +28,7 @@
     android:layout_height="match_parent"
     android:padding="24dp">
 
+    <!-- Logo at the top -->
     <ImageView
         android:id="@+id/imageLogo"
         android:layout_width="250dp"
@@ -40,6 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
+    <!-- Welcome text below logo -->
     <TextView
         android:id="@+id/textoBienvenida"
         android:layout_width="0dp"
@@ -53,6 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- Using TextInputLayout for better UI/UX -->
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayoutApodo"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -96,6 +99,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+    <!-- Button at the bottom -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonContinuar"
         android:layout_width="0dp"

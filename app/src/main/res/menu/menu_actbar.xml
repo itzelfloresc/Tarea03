@@ -4,23 +4,17 @@
     <item
         android:id="@+id/action_search"
         android:icon="@android:drawable/ic_menu_search"
-
-        android:title="@string/menu_search"
-
+        android:title="Buscar"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_notifications"
-
-        android:title="@string/menu_notifications"
-
+        android:title="Notificaciones"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/action_help"
-
-        android:title="@string/menu_help"
-
+        android:title="Ayuda"
         app:showAsAction="never" />
     <item
         android:id="@+id/action_cart"
