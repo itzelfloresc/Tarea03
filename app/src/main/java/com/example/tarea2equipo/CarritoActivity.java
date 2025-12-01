@@ -1,12 +1,6 @@
 package com.example.tarea2equipo;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import com.google.android.material.navigation.NavigationView;
-import android.view.MenuItem;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,11 +17,12 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-public class CarritoActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+// La clase ya no implementa NavigationView.OnNavigationItemSelectedListener
+public class CarritoActivity extends AppCompatActivity {
 
-    private DrawerLayout drawerLayout;
+    // Se eliminan las variables de DrawerLayout y NavigationView,
+    // pero se mantienen las de usuario
     private int idUsuarioActual;
-
     private int idUsuario;
     private String nombreUsuario;
     private String casaUsuario;
@@ -37,15 +32,7 @@ public class CarritoActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito);
 
-        // --- SETUP DRAWER/TOOLBAR ---
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        // --- SE ELIMINA LA CONFIGURACIÓN DEL DRAWER/TOOLBAR ---
 
         ListView listView = findViewById(R.id.listaCarrito);
         TextView textTotal = findViewById(R.id.textTotal);
@@ -131,31 +118,4 @@ public class CarritoActivity extends AppCompatActivity implements NavigationView
         }
     }
 
-    // --- MENÚS ---
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.nav_home) {
-            CarritoManager.getInstance().vaciarCarrito();
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        } else if (id == R.id.nav_profile) {
-            Intent intentPerfil = new Intent(this, PerfilActivity.class);
-            intentPerfil.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
-            intentPerfil.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
-            intentPerfil.putExtra("ID_USUARIO", idUsuario);
-            startActivity(intentPerfil);
-        } else if (id == R.id.nav_settings) {
-            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_cart || id == R.id.nav_carrito) {
-            // --- PASAR ID AL CARRITO ---
-            Intent intent = new Intent(this, CarritoActivity.class);
-            intent.putExtra("ID_USUARIO", idUsuario);
-            startActivity(intent);
-        }
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
 }
