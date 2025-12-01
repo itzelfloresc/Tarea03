@@ -1,17 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Tarea2Equipo</string>
     <string name="logo_desc">Logo de Hogwarts</string>
     <string name="descripcion_app">Aprende más sobre los ingredientes más comunes para hacer pociones</string>
-    <string name="navigation_drawer_open">Abrir menú de navegación</string>
-    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
-
     <string name="texto_apodo">Ingresa tu nombre para personalizar la experiencia:</string>
     <string name="texto_correo">Ingresa la casa a la que perteneces:</string>
     <string name="hint_nombre">Ingresa tu nombre</string>
     <string name="hint_casa">Ingresa tu casa</string>
     <string name="boton_continuar">Continuar</string>
-
     <string name="texto_instruccion">Seleccione un ingrediente para saber sus propiedades</string>
     <string name="ingrediente1_nombre">Gillyweed</string>
     <string name="ingrediente2_nombre">Pelo de unicornio</string>
@@ -21,38 +16,36 @@
     <string name="ingrediente_2">Ingrediente 2</string>
     <string name="ingrediente_3">Ingrediente 3</string>
     <string name="ingrediente_4">Ingrediente 4</string>
-
-    <string name="detalle_nombre_ingrediente">Nombre del Ingrediente</string>
-    <string name="detalle_propiedades_label">Propiedades:</string>
-    <string name="detalle_cargando_descripcion">Cargando descripción...</string>
-    <string name="detalle_imagen_descripcion">Imagen del Ingrediente</string>
-    <string name="detalle_precio_inicial">Precio: $0.00</string>
-    <string name="btn_regresar">Regresar</string> <string name="btn_agregar_carrito">Agregar (+)</string>
-
+    <string name="nombre_ingrediente_placeholder">Nombre del Ingrediente</string>
+    <string name="propiedades_titulo">Propiedades:</string>
+    <string name="cargando_descripcion">Cargando descripción...</string>
+    <string name="imagen_ingrediente_desc">Imagen del Ingrediente</string>
+    <string name="precio_inicial">Precio: $0.00</string>
+    <string name="regresar_btn">Regresar</string>
+    <string name="agregar_btn">Agregar (+)</string>
     <string name="gillyweed_propiedades_desc">Las Bránquialgas permiten a quien las consume respirar bajo el agua y les da branquias y membranas entre los dedos. Su efecto dura aproximadamente una hora. Es esencial para el Torneo de los Tres Magos.</string>
     <string name="unicornhair_propiedades_desc">El pelo de unicornio es una sustancia poderosa y delicada. Es un núcleo común para varitas mágicas y se utiliza en pociones curativas por su gran pureza y propiedades mágicas. Es extremadamente difícil de obtener.</string>
     <string name="mandragora_propiedades_desc">La Mandrágora se utiliza principalmente para curar a las personas que han sido petrificadas. Su llanto es mortal, por lo que es necesario usar orejeras al manipularla. El proceso de maduración es largo.</string>
     <string name="tentacula_propiedades_desc">La Tentácula Venenosa es una planta altamente peligrosa, clasificada como de clase XXXXX. Sus tentáculos contienen un veneno mortal. Sus hojas, sin embargo, se utilizan en algunas pociones, y es un ingrediente prohibido.</string>
-
     <string name="mi_carrito">Mi Carrito</string>
     <string name="ingredientes_seleccionados">Tus Ingredientes Seleccionados:</string>
     <string name="total_inicial">Total: $0.00</string>
     <string name="seguir_comprando">Seguir comprando</string>
     <string name="pagar">Pagar</string>
-    <string name="boton_regresar">Regresar a la Lista</string> <string name="perfil_titulo">Perfil de Usuario</string>
-    <string name="perfil_usuario_label">Usuario: </string>
-    <string name="perfil_casa_label">Casa: </string>
-    <string name="perfil_historial_titulo">Historial de Pedidos:</string>
-    <string name="btn_volver">Volver</string>
-
-    <string name="nav_home">Inicio</string> <string name="nav_profile">Perfil</string>
-    <string name="nav_carrito">Carrito</string> <string name="nav_help">Ayuda</string>
-    <string name="nav_view_cart">Ver Carrito</string>
-    <string name="nav_logout">Cerrar Sesión</string>
-
+    <string name="boton_regresar">Regresar a la Lista</string>
     <string name="action_search">Buscar</string>
     <string name="action_notifications">Notificaciones</string>
     <string name="action_help">Ayuda</string>
     <string name="action_cart">Carrito</string>
-
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_help">Ayuda</string>
+    <string name="nav_view_cart">Ver Carrito</string>
+    <string name="perfil_titulo">Perfil de Usuario</string>
+    <string name="perfil_usuario_label">Usuario: </string>
+    <string name="perfil_casa_label">Casa: </string>
+    <string name="perfil_historial_titulo">Historial de Pedidos:</string>
+    <string name="btn_volver">Volver</string>
+    <string name="nav_logout">Cerrar Sesión</string>
+    <string name="navigation_drawer_open">Abrir menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
 </resources>
