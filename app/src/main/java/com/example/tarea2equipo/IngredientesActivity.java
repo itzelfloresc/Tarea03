@@ -63,7 +63,6 @@ public class IngredientesActivity extends AppCompatActivity implements Navigatio
         gestor.close();
     }
 
-    // Método llamado por el atributo android:onClick="mostrarInfo" en el estilo IngredientCard
     public void mostrarInfo(View view) {
         // El tag de la CardView (View) contiene el nombre técnico del ingrediente
         String ingredienteTag = (String) view.getTag();

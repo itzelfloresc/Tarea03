@@ -115,6 +115,7 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
     }
 
     // --- MENÚS ---
+    /*
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -169,5 +170,5 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    } */
 }

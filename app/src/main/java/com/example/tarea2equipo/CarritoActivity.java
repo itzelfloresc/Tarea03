@@ -96,7 +96,6 @@ public class CarritoActivity extends AppCompatActivity implements NavigationView
         });
     }
 
-    // --- MÉTODO PARA GUARDAR EN BASE DE DATOS ---
     private void procesarCompra() {
         // 1. Recopilar datos para el Pedido
         List<Ingrediente> productosCompra = CarritoManager.getInstance().getProductos();
@@ -132,7 +131,7 @@ public class CarritoActivity extends AppCompatActivity implements NavigationView
     }
 
     // --- MENÚS ---
-    @Override
+    /* @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_home) {
@@ -157,5 +156,5 @@ public class CarritoActivity extends AppCompatActivity implements NavigationView
         }
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
+    } */
 }
