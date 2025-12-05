@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     // Claves para pasar datos a otras Activities
     public static final String EXTRA_NOMBRE = "com.example.tarea2equipo.NOMBRE";
     public static final String EXTRA_CASA = "com.example.tarea2equipo.CASA";
@@ -16,8 +19,16 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_inicio);
+
+        // 1. Configura Toolbar
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        // 2. Establece el título
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Hogwarts Store");
+        }
 
         final TextInputEditText inputApodo = findViewById(R.id.inputApodo);
         // El ID 'inputEmail' en activity_inicio.xml se usa para la casa

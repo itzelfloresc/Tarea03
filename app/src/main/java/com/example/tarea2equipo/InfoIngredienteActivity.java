@@ -1,50 +1,32 @@
 package com.example.tarea2equipo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import com.google.android.material.navigation.NavigationView;
-import android.view.Menu;
-import android.view.MenuItem;
-
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.google.android.material.button.MaterialButton;
-import android.content.Intent;
 import android.widget.Toast;
 
-public class InfoIngredienteActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
-    private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
+public class InfoIngredienteActivity extends AppCompatActivity {
+
     private double precioIngrediente = 0;
-    private int idUsuario;
-    private String nombreUsuario;
-    private String casaUsuario;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_ingrediente);
 
-        // --- CONFIGURACIÓN ACTIONBAR Y DRAWER ---
+        // 1. Configura Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawerLayout, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Hogwarts Store");
+        }
 
         TextView textTituloIngrediente = findViewById(R.id.textTituloIngrediente);
         TextView textPropiedadesDescripcion = findViewById(R.id.textPropiedadesDescripcion);
@@ -59,10 +41,6 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
             String ingredienteNombre = extras.getString("INGREDIENTE_NOMBRE", "Ingrediente Desconocido");
 
             textTituloIngrediente.setText(ingredienteNombre);
-
-            idUsuario = extras.getInt("ID_USUARIO", -1);
-            nombreUsuario = extras.getString(MainActivity.EXTRA_NOMBRE, "Estudiante");
-            casaUsuario = extras.getString(MainActivity.EXTRA_CASA, "Hogwarts");
 
             int descripcionResId;
             int imagenResId;
@@ -113,62 +91,4 @@ public class InfoIngredienteActivity extends AppCompatActivity implements Naviga
             }
         });
     }
-
-    // --- MENÚS ---
-    /*
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.nav_home) {
-            CarritoManager.getInstance().vaciarCarrito();
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        } else if (id == R.id.nav_profile) {
-            Intent intentPerfil = new Intent(this, PerfilActivity.class);
-            intentPerfil.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
-            intentPerfil.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
-            intentPerfil.putExtra("ID_USUARIO", idUsuario);
-            startActivity(intentPerfil);
-        } else if (id == R.id.nav_settings) {
-            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.action_cart || id == R.id.nav_carrito) {
-            // --- PASAR ID AL CARRITO ---
-            Intent intent = new Intent(this, CarritoActivity.class);
-            intent.putExtra("ID_USUARIO", idUsuario);
-            intent.putExtra(MainActivity.EXTRA_NOMBRE, nombreUsuario);
-            intent.putExtra(MainActivity.EXTRA_CASA, casaUsuario);
-            startActivity(intent);
-        }
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actbar, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_cart) { // Agregar lógica para el icono del carrito arriba a la derecha
-            Intent intent = new Intent(this, CarritoActivity.class);
-            intent.putExtra("ID_USUARIO", idUsuario);
-            startActivity(intent);
-            return true;
-        } else if (id == R.id.action_search) {
-            Toast.makeText(this, "Buscando...", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (id == R.id.action_notifications) {
-            Toast.makeText(this, "Notificaciones", Toast.LENGTH_SHORT).show();
-            return true;
-        } else if (id == R.id.action_help) {
-            Toast.makeText(this, "Ayuda", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    } */
 }
