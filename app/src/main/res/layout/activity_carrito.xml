@@ -1,59 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:title="@string/mi_carrito"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/fondo">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:title="Mi Carrito"/>
+            android:layout_height="wrap_content"
+            android:text="@string/ingredientes_seleccionados"
+            android:textColor="@color/blanco"
+            android:textSize="18sp"
+            android:layout_marginBottom="10dp"/>
+
+        <ListView
+            android:id="@+id/listaCarrito"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/blanco"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/textTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/total_inicial"
+            android:textColor="@color/blanco"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:layout_marginBottom="16dp"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@color/fondo">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tus Ingredientes Seleccionados:"
-                android:textColor="@color/blanco"
-                android:textSize="18sp"
-                android:layout_marginBottom="10dp"/>
-
-            <ListView
-                android:id="@+id/listaCarrito"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@color/blanco"
-                android:layout_marginBottom="16dp"/>
-
-            <TextView
-                android:id="@+id/textTotal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Total: $0.00"
-                android:textColor="@color/blanco"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:gravity="end"
-                android:layout_marginBottom="16dp"/>
-
-            <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -64,7 +59,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Seguir comprando"
+                android:text="@string/seguir_comprando"
                 android:layout_marginEnd="4dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
@@ -73,18 +68,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Pagar"
+                android:text="@string/pagar"
                 android:layout_marginStart="4dp"
                 app:backgroundTint="#4CAF50"/>
         </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/menu_drawer" />
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

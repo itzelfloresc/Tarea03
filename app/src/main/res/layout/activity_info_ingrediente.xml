@@ -1,145 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.drawerlayout.widget.DrawerLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".InfoIngredienteActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="@string/app_name"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/classroom">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textTituloIngrediente"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:title="@string/app_name"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="16dp"
+            android:text="@string/nombre_ingrediente_placeholder"
+            android:textColor="@color/texto_principal"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separador"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textPropiedadesTitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/propiedades_titulo"
+            android:textColor="@color/texto_principal"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/textPropiedadesDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cargando_descripcion"
+            android:textColor="@color/texto_principal"
+            android:textSize="18sp"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="@color/blanco">
+
+            <ImageView
+                android:id="@+id/imageIngrediente"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/gillyweed"
+                android:padding="8dp"
+                android:contentDescription="@string/imagen_ingrediente_desc" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textPrecio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/precio_inicial"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#4CAF50"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@drawable/classroom">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textTituloIngrediente"
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonRegresar"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="16dp"
-
-                android:text="@string/ingrediente_nombre_placeholder"
-
-                android:textColor="@color/texto_principal"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/separador"
-                android:layout_marginBottom="24dp"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textPropiedadesTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:text="@string/titulo_propiedades"
-
-                android:textColor="@color/texto_principal"
-                android:textSize="20sp"
-                android:textStyle="italic"
-                android:layout_marginBottom="8dp"/>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/textPropiedadesDescripcion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:text="@string/descripcion_placeholder"
-
-                android:textColor="@color/texto_principal"
-                android:textSize="18sp"
-                android:lineSpacingExtra="4dp"
-                android:layout_marginBottom="24dp"/>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="32dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="8dp"
-                app:cardBackgroundColor="@color/blanco">
+                android:text="@string/regresar_btn"
+                android:layout_marginEnd="4dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
 
-                <ImageView
-                    android:id="@+id/imageIngrediente"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/gillyweed"
-                    android:padding="8dp"
-
-                    android:contentDescription="@string/descripcion_imagen_ingrediente" />
-
-            </com.google.android.material.card.MaterialCardView>
-            <TextView
-                android:id="@+id/textPrecio"
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonAgregarCarrito"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Precio: $0.00"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="#4CAF50"
-                android:gravity="center"
-                android:layout_marginBottom="16dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/buttonRegresar"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Regresar"
-                    android:layout_marginEnd="4dp"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/buttonAgregarCarrito"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Agregar (+)"
-                    android:layout_marginStart="4dp"
-                    app:backgroundTint="#4CAF50"/>
-            </LinearLayout>
-
+                android:layout_weight="1"
+                android:text="@string/agregar_btn"
+                android:layout_marginStart="4dp"
+                app:backgroundTint="#4CAF50"/>
         </LinearLayout>
+
     </LinearLayout>
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/menu_drawer" />
-
-</androidx.drawerlayout.widget.DrawerLayout>
+</LinearLayout>

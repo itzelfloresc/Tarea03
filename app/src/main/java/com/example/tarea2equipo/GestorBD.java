@@ -28,7 +28,6 @@ public class GestorBD {
 
     // --- GESTIÓN DE USUARIOS ---
     public int registrarUsuario(Usuario usuario) {
-        // (Mismo código que en la respuesta anterior para buscar o crear usuario)
         int id = -1;
         String query = "SELECT " + StoreBaseSQLite.COL_ID_USUARIO +
                 " FROM " + StoreBaseSQLite.TABLA_USUARIOS +
@@ -62,7 +61,7 @@ public class GestorBD {
         if (idPedidoGenerado != -1) {
             for (Ingrediente ing : carrito) {
                 ContentValues valuesDetalle = new ContentValues();
-                valuesDetalle.put(StoreBaseSQLite.COL_DET_ID_PED, idPedidoGenerado); // <-- LA CLAVE
+                valuesDetalle.put(StoreBaseSQLite.COL_DET_ID_PED, idPedidoGenerado);
                 valuesDetalle.put(StoreBaseSQLite.COL_DET_PROD, ing.getNombre());
                 valuesDetalle.put(StoreBaseSQLite.COL_DET_PRECIO, ing.getPrecio());
 
@@ -87,7 +86,7 @@ public class GestorBD {
                 // El gestor extrae la lista que está DENTRO del objeto pedido
                 for (Ingrediente ing : pedido.getIngredientes()) {
                     ContentValues valuesDetalle = new ContentValues();
-                    valuesDetalle.put(StoreBaseSQLite.COL_DET_ID_PED, idPedidoGenerado); // Usamos el ID del paso 1
+                    valuesDetalle.put(StoreBaseSQLite.COL_DET_ID_PED, idPedidoGenerado);
                     valuesDetalle.put(StoreBaseSQLite.COL_DET_PROD, ing.getNombre());
                     valuesDetalle.put(StoreBaseSQLite.COL_DET_PRECIO, ing.getPrecio());
 

@@ -6,7 +6,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".IngredientesActivity">
+    tools:context=".IngredientesActivity"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,113 +52,105 @@
                 <androidx.cardview.widget.CardView
                     style="@style/IngredientCard"
                     android:tag="gillyweed">
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
                         <ImageView
-                            android:id="@+id/imageGillyweed"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
-                            android:layout_centerHorizontal="true"
                             android:src="@drawable/gillyweed"
                             android:contentDescription="@string/ingrediente_1"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageGillyweed"
-                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="8dp"
                             android:text="@string/ingrediente1_nombre"
                             android:textColor="@android:color/black"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:gravity="center"/>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     style="@style/IngredientCard"
                     android:tag="unicornhair">
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
                         <ImageView
-                            android:id="@+id/imageUnicornhair"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
-                            android:layout_centerHorizontal="true"
                             android:src="@drawable/hair"
                             android:contentDescription="@string/ingrediente_2"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageUnicornhair"
-                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="8dp"
                             android:text="@string/ingrediente2_nombre"
                             android:textColor="@android:color/black"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:gravity="center"/>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     style="@style/IngredientCard"
                     android:tag="mandragora">
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
                         <ImageView
-                            android:id="@+id/imageMandragora"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
-                            android:layout_centerHorizontal="true"
                             android:src="@drawable/mandragora"
                             android:contentDescription="@string/ingrediente_3"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageMandragora"
-                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="8dp"
                             android:text="@string/ingrediente3_nombre"
                             android:textColor="@android:color/black"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:gravity="center"/>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     style="@style/IngredientCard"
                     android:tag="tentacula">
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="16dp">
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        android:gravity="center">
                         <ImageView
-                            android:id="@+id/imageTentacula"
                             android:layout_width="90dp"
                             android:layout_height="90dp"
-                            android:layout_centerHorizontal="true"
                             android:src="@drawable/tentacula"
                             android:contentDescription="@string/ingrediente_4"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/imageTentacula"
-                            android:layout_centerHorizontal="true"
                             android:layout_marginTop="8dp"
                             android:text="@string/ingrediente4_nombre"
                             android:textColor="@android:color/black"
                             android:textSize="14sp"
                             android:textStyle="bold"
                             android:gravity="center"/>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
             </GridLayout>

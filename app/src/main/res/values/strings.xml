@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <string name="app_name">Tarea2Equipo</string>
     <string name="logo_desc">Logo de Hogwarts</string>
     <string name="descripcion_app">Aprende más sobre los ingredientes más comunes para hacer pociones</string>
@@ -16,34 +16,36 @@
     <string name="ingrediente_2">Ingrediente 2</string>
     <string name="ingrediente_3">Ingrediente 3</string>
     <string name="ingrediente_4">Ingrediente 4</string>
-    <string name="default_ingredient_name">Ingrediente Desconocido</string>
+    <string name="nombre_ingrediente_placeholder">Nombre del Ingrediente</string>
+    <string name="propiedades_titulo">Propiedades:</string>
+    <string name="cargando_descripcion">Cargando descripción...</string>
+    <string name="imagen_ingrediente_desc">Imagen del Ingrediente</string>
+    <string name="precio_inicial">Precio: $0.00</string>
+    <string name="regresar_btn">Regresar</string>
+    <string name="agregar_btn">Agregar (+)</string>
     <string name="gillyweed_propiedades_desc">Las Bránquialgas permiten a quien las consume respirar bajo el agua y les da branquias y membranas entre los dedos. Su efecto dura aproximadamente una hora. Es esencial para el Torneo de los Tres Magos.</string>
     <string name="unicornhair_propiedades_desc">El pelo de unicornio es una sustancia poderosa y delicada. Es un núcleo común para varitas mágicas y se utiliza en pociones curativas por su gran pureza y propiedades mágicas. Es extremadamente difícil de obtener.</string>
     <string name="mandragora_propiedades_desc">La Mandrágora se utiliza principalmente para curar a las personas que han sido petrificadas. Su llanto es mortal, por lo que es necesario usar orejeras al manipularla. El proceso de maduración es largo.</string>
     <string name="tentacula_propiedades_desc">La Tentácula Venenosa es una planta altamente peligrosa, clasificada como de clase XXXXX. Sus tentáculos contienen un veneno mortal. Sus hojas, sin embargo, se utilizan en algunas pociones, y es un ingrediente prohibido.</string>
-    <string name="default_user_name">Estudiante</string>
-    <string name="default_house_name">Hogwarts</string>
-    <string name="error_input_name">Por favor ingresa tu nombre</string>
-    <string name="error_input_house">Por favor ingresa tu casa</string>
-    <string name="toast_home">Ir a Inicio</string>
-    <string name="toast_profile">Ir a Perfil</string>
-    <string name="toast_settings">Ir a Configuración</string>
-    <string name="toast_search">Buscando…</string> <string name="toast_notifications">Ver notificaciones</string>
-    <string name="toast_help">Ayuda</string>
-    <string name="profile_message">Perfil de %1$s</string>
-    <string name="settings_message">Configuración</string>
-    <string name="search_message">Buscando…</string> <string name="notifications_message">Notificaciones</string>
-    <string name="help_message">Ayuda</string>
+    <string name="mi_carrito">Mi Carrito</string>
+    <string name="ingredientes_seleccionados">Tus Ingredientes Seleccionados:</string>
+    <string name="total_inicial">Total: $0.00</string>
+    <string name="seguir_comprando">Seguir comprando</string>
+    <string name="pagar">Pagar</string>
     <string name="boton_regresar">Regresar a la Lista</string>
-    <string name="ingrediente_nombre_placeholder">Nombre del Ingrediente</string>
-    <string name="titulo_propiedades">Propiedades:</string>
-    <string name="descripcion_placeholder">Cargando descripción…</string> <string name="descripcion_imagen_ingrediente">Imagen del Ingrediente</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_notifications">Notificaciones</string>
+    <string name="action_help">Ayuda</string>
+    <string name="action_cart">Carrito</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="nav_help">Ayuda</string>
+    <string name="nav_view_cart">Ver Carrito</string>
+    <string name="perfil_titulo">Perfil de Usuario</string>
+    <string name="perfil_usuario_label">Usuario: </string>
+    <string name="perfil_casa_label">Casa: </string>
+    <string name="perfil_historial_titulo">Historial de Pedidos:</string>
+    <string name="btn_volver">Volver</string>
+    <string name="nav_logout">Cerrar Sesión</string>
     <string name="navigation_drawer_open">Abrir menú de navegación</string>
     <string name="navigation_drawer_close">Cerrar menú de navegación</string>
-    <string name="menu_search">Buscar</string>
-    <string name="menu_notifications">Notificaciones</string>
-    <string name="menu_help">Ayuda</string>
-    <string name="drawer_menu_home">Inicio</string>
-    <string name="drawer_menu_profile">Perfil</string>
-    <string name="drawer_menu_settings">Configuración</string>
 </resources>
